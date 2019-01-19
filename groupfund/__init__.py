@@ -8,7 +8,7 @@ from flask_login import LoginManager
 
 app = Flask(__name__)
 
-
+app.config['SECRET_KEY'] = 'mysecret'
 ############################
 ### DATABASE SETUP ##########
 ########################
@@ -29,5 +29,7 @@ login_manager.login_view = 'users.login'
 ##################################################
 
 from groupfund.core.views import core
+from groupfund.users.views import users
 
 app.register_blueprint(core)
+app.register_blueprint(users)

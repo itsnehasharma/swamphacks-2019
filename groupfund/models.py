@@ -49,4 +49,4 @@ class Transaction(db.Model):
         self.user_id = user_id
 
     def __repr__(self):
-        return f"Post ID: {self.id} -- Date: {self.date} --- {self.amount}"
+        return f"Transaction ID: {self.id} -- Date: {self.date} --- {self.amount}"

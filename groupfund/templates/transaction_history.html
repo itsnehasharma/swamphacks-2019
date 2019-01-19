@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block content%}
+
+<div class="container">
+  <div class="jumbotron">
+    <div align="center">
+      <h1>welcome to the page for {{user.username}}</h1>
+    </div>
+  </div>
+
+
+{ % for transaction in history.items %}
+  <h2> <a href="{{url_for('payments.history', transaction_id=transaction.id )}}">{{transaction.date}}</a></h2>
+  Amount: {{transaction.amount}}
+  <p class='text-muted'>
+    Notes: {{transaction.notes}}
+    </p>
+    <br / />
+
+{% endfor %}
+
+</div>
+
+
+{% endblock %}
