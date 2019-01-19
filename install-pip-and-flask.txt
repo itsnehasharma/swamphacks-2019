@@ -1,0 +1,7 @@
+download the file "get-pip.py" and move it wherever you want
+
+>> python get-pip.py
+
+>> pip install flask
+
+das it
