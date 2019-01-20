@@ -37,13 +37,13 @@ class Transaction(db.Model):
     users = db.relationship(User)
 
     id = db.Column(db.Integer,primary_key=True)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
     date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-    amount = db.Column(db.Integer,nullable=False)
+    amount = db.Column(db.String(140),nullable=False)
     notes = db.Column(db.Text,nullable=False)
 
-    def __init__(self,title,text,user_id):
+    def __init__(self,amount,notes,user_id):
         self.amount = amount
         self.notes = notes
         self.user_id = user_id
