@@ -55,13 +55,17 @@ class Group(db.Model):
 	total_amt=db.Column(db.Float,nullable=False)
 
 	list_id=db.relationship('User',backref='group')
-
+	transactions=db.relationship('Transaction')
 	def __init__(self,group_id):
 		self.group_id=group_id
 		self.total_amt=0
 
 	def __repr__(self):
-		compile=""
 		for user in self.list_id:
-			compile=""+compile+"Username: %s Amount: %.2f\n" % (user.username,user.transaction.amount)
-		return compile
+			comp=""
+			tempsum=0
+			for trans in self.transactions:
+				if(user.id==trans.user_id):
+					tempsum+=trans.amount
+			comp=comp+"Username: %s Amount: %.2f\n" % (user.username,tempsum)
+		return comp
