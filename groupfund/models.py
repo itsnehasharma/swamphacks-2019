@@ -63,7 +63,7 @@ class Group(db.Model):
 	def __repr__(self):
 		for user in self.list_id:
 			comp=""
-			tempsum=0
+			tempsum=0.0
 			for trans in self.transactions:
 				if(user.id==trans.user_id):
 					tempsum+=trans.amount
