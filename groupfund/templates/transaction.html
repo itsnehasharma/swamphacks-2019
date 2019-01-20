@@ -1,0 +1,16 @@
+{% extends "base.html"%}
+{% block content%}
+<div class="jumbotron">
+  <h1>{{transaction.amount}}</h1>
+  <h2>{{transaction.notes}}</h2>
+  <h3>{{transaction.date}}</h3>
+
+
+
+<!-- what to do if the person is the person -->
+  <!-- {% if transaction.person == current_user%}
+  <div>
+    <a href="#"></a>
+  </div> -->
+</div>
+{% endblock%}

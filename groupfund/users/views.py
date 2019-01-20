@@ -17,7 +17,6 @@ def register():
         user = User(email=form.email.data,
                     username=form.username.data,
                     password=form.password.data)
-        print('hi')
 
         db.session.add(user)
         db.session.commit()
