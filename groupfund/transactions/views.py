@@ -13,6 +13,7 @@ transactions = Blueprint('transactions', __name__)
 def make_payment():
 
     form  = TransactionForm()
+
     if form.validate_on_submit():
 
         #print(form.amount.data)
