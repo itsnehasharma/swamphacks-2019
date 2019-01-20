@@ -38,7 +38,7 @@ class Transaction(db.Model):
 	id = db.Column(db.Integer,primary_key=True)
 	user_id = db.Column(db.Integer,db.ForeignKey('users.id'),nullable=False)
 	date = db.Column(db.DateTime,nullable=False,default=datetime.utcnow)
-	amount = db.Column(db.float,nullable=False)
+	amount = db.Column(db.Float,nullable=False)
 	notes = db.Column(db.Text,nullable=False)
 
 	def __init__(self,amount,notes,user_id):
@@ -49,13 +49,12 @@ class Transaction(db.Model):
 	def __repr__(self):
 		return f"Transaction ID: {self.id} -- Date: {self.date} --- {self.amount}"
 
-class Group(dB.Model):
+class Group(db.Model):
 	__tablename__='groups'
 	group_id=db.Column(db.Integer,primary_key=True)
-	total_amt=db.Column(db.float,nullable=False)
+	total_amt=db.Column(db.Float,nullable=False)
 
 	list_id=db.relationship('User',backref='group')
-#	(db.Integer,db.ForeignKey('users.id'))
 
 	def __init__(self,group_id):
 		self.group_id=group_id
