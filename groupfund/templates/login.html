@@ -1,27 +1,22 @@
 {% extends "base.html"%}
 {% block content %}
-<div class="jumbotron">
-  <h1>Log in to loan the loaf</h1>
+<div class="p-3 mb-2 bg-warning text-dark">Log in to loan the loaf!</div>
   <form class="form-group" method="post">
     {{form.hidden_tag()}}
     {{form.csrf_token}}
 
-    <div class="form-group">
-      <label for="username">{{form.username.label}}</label>
-      {{form.username(class="form-control form-control-sm")}}
-    </div>
+    <div class="p-3 mb-2 bg-warning text-dark">Username</div>
+      {{form.username(class="form-control form-control-sm")}}<br>
 
-    <div class="form-group">
-      <label for="password">{{form.password.label}}</label>
-      {{form.password(class="form-control form-control-sm")}}
-    </div>
+    <div class="p-3 mb-2 bg-warning text-dark">Password</div>
+      {{form.password(class="form-control form-control-sm")}}<br>
 
     <div class="form-group">
         {{form.submit(class="btn btn-primary")}}
     </div>
 
     <p>
-      Don't have an account? Sign up <a href="{{url_for('users.register')}}">here</a>
+      Don't have an account? Sign up <a href="{{url_for('users.register')}}">here!</a>
       </p>
   </form>
   </div>
