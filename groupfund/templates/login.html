@@ -1,5 +1,15 @@
 {% extends "base.html"%}
 {% block content %}
+<html>
+<head>
+<style>
+body {
+  background-image: url("https://secureimg.stitcher.com/feedimagesplain328/249807.jpg");
+}
+</style>
+</head>
+
+<body>
 <div class="p-3 mb-2 bg-warning text-dark">Log in to loan the loaf!</div>
   <form class="form-group" method="post">
     {{form.hidden_tag()}}
@@ -11,7 +21,7 @@
     <div class="p-3 mb-2 bg-warning text-dark">Password</div>
       {{form.password(class="form-control form-control-sm")}}<br>
 
-    <div class="form-group">
+    <div class="form-group"><br>
         {{form.submit(class="btn btn-primary")}}
     </div>
 
@@ -20,6 +30,8 @@
       </p>
   </form>
   </div>
+</body>
+</html>
 
 
   {% endblock %}
