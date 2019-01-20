@@ -1,0 +1,13 @@
+  <body>
+    <form method="POST">
+      {# This hidden_tag is a CSRF security feature. #}
+      {{ form.hidden_tag() }}
+      <h1>wazzaaappppppp</h1>
+      {{form.username.label}} {{form.username}}
+      <br>
+      {{form.password.label}} {{form.password}}
+      <br>
+      {{ form.submit()}}
+    </form>
+
+  </body>
