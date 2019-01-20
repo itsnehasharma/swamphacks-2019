@@ -23,8 +23,9 @@ def make_payment():
 
         db.session.add(payment)
         db.session.commit()
-        print('paid')
-        return redirect(url_for('core.index'))
+        print(payment)
+
+        return redirect(url_for('users.account'))
 
     return render_template('make_payment.html', form=form)
 
@@ -33,6 +34,17 @@ def make_payment():
 def transaction(transaction_id):
     transaction = Transaction.query.get_or_404(transaction_id)
 
-    return render_template('transaction_html', amount = transaction.amount,
+    return render_template('transaction.html', amount = transaction.amount,
                                         date = transaction.date,
                                         transaction = transaction)
+
+
+# @transactions.route('/transaction_history')
+# def transaction_history():
+#
+#     form = TransactionForm()
+#
+#     transactions = Transaction.query.filter_by(user_id = current_user.id)
+#     print(transactions)
+#
+#     return render_template('transaction_history.html', transactions=transactions)
