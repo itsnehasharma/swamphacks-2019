@@ -11,7 +11,6 @@ users = Blueprint('users',__name__)
 def register():
 
     form = RegistrationForm()
-    print('hellooooo')
 
     if form.validate_on_submit():
         user = User(email=form.email.data,
@@ -74,7 +73,21 @@ def account():
 @login_required
 def finance_center():
 
+    # sum = 0
+    # user = User.query.filter_by(current_user.username).first_or_404()
+    # transaction_history = Transaction.query.filter_by(person=user)
+
+    # for transaction in transaction_history.items:
+    #     str = transaction.amount
+    #     sum = sum + transaction.float(str)
+
     return render_template('finance_center.html')
+
+@users.route('/payment')
+@login_required
+def payment():
+
+    return render_template('payment.html')
 
 
 @users.route("/<username>")
@@ -82,4 +95,10 @@ def transaction_history(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
     transaction_history = Transaction.query.filter_by(person=user).order_by(Transaction.date.desc()).paginate(page=page, per_page=5)
+    sum = 0
+
+    for transaction in transaction_history.items:
+        str = transaction.amount
+        sum = sum + float(str)
+
     return render_template('transaction_history.html', transaction_history=transaction_history, user=user)
