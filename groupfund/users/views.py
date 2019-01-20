@@ -72,9 +72,17 @@ def account():
 
 
 #transaction history
+# @users.route("/<username>")
+# def transaction_history(username):
+#     page = request.args.get('page', 1, type=int)
+#     user = User.query.filter_by(username=username).first_or_404()
+#     history = Transaction.query.filter_by(person=user).order_by(Transaction.date.desc()).paginate(page=page, per_page=5)
+#     return render_template('transaction_history.html', history=history, user=user)
+
+
 @users.route("/<username>")
 def transaction_history(username):
     page = request.args.get('page', 1, type=int)
     user = User.query.filter_by(username=username).first_or_404()
-    history = Transaction.query.filter_by(person=user).order_by(Transaction.date.desc()).paginate(page=pge, per_page=5)
-    return render_template('transaction_history.html', history=history, user=user)
+    transaction_history = Transaction.query.filter_by(person=user).order_by(Transaction.date.desc()).paginate(page=page)
+    return render_template('transaction_history.html', transaction_history=transaction_history, user=user)

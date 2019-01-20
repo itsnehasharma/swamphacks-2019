@@ -1,25 +1,43 @@
 {% extends "base.html" %}
-{% block content%}
+{% block content %}
 
-<div class="container">
-  <div class="jumbotron">
-    <div align="center">
-      <h1>welcome to the page for {{user.username}}</h1>
-    </div>
+<div class="jumbotron">
+  <div align="center">
+    <h1>Hey {{current_user.username}}!</h1>
+    <br>Keep track of your transaction history below.
+    <!-- insert image for person -->
+
   </div>
+</div>
 
 
-{ % for transaction in history.items %}
-  <h2> <a href="{{url_for('payments.history', transaction_id=transaction.id )}}">{{transaction.date}}</a></h2>
-  Amount: {{transaction.amount}}
-  <p class='text-muted'>
-    Notes: {{transaction.notes}}
-    </p>
-    <br / />
-
+{% for transaction in transaction_history.items %}
+  <button type="button" class="btn btn-outline-secondary btn-block" data-toggle="modal" data-target="#label{{ transaction.id }}"><h5>Transaction {{ transaction.id }}: {{transaction.date.strftime('%m-%d-%Y')}}</h5></button>
 {% endfor %}
+  <!-- Modal -->
+{% for transaction in transaction_history.items %}
+<div class="modal fade" id="label{{ transaction.id }}" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title col-12 modal-title text-center">Transaction on {{transaction.date.strftime('%m-%d-%Y')}}</h4>
+      </div>
+      <div class="modal-body">
+        <h3>Amount: ${{transaction.amount}} </h3>
+        <p>Notes: {{transaction.notes}}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endfor %}
+
 
 </div>
 
+</div>
 
 {% endblock %}
