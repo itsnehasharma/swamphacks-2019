@@ -1,7 +1,7 @@
 from flask import render_template, url_for, flash, redirect, request, Blueprint
 from flask_login import login_user, current_user, logout_user, login_required
 from groupfund import db
-from groupfund.models import User, Transaction
+from groupfund.models import User, Transaction, Group
 from groupfund.users.forms import RegistrationForm, LoginForm, UpdateUserForm
 
 users = Blueprint('users',__name__)
@@ -9,18 +9,23 @@ users = Blueprint('users',__name__)
 #register
 @users.route('/register', methods=['GET', 'POST'])
 def register():
+    if not group.id.first():
+        group = Group(total_amt = 0)
+
+    gid = group.id.first()
 
     form = RegistrationForm()
-    print('hellooooo')
 
     if form.validate_on_submit():
         user = User(email=form.email.data,
                     username=form.username.data,
-                    password=form.password.data)
+                    password=form.password.data,
+                    group_id=gid)
 
         db.session.add(user)
         db.session.commit()
-        flash('Thanks for registering for groupfund!')
+        # print(group1)
+
         return redirect(url_for('users.login'))
 
     return render_template('register.html', form=form)
@@ -74,6 +79,7 @@ def account():
 @login_required
 def finance_center():
 
+    my_transactions = Transaction.query.filter_by(user_id=current_user.id)
     return render_template('finance_center.html')
 
 
