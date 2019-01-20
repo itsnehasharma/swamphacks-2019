@@ -11,14 +11,16 @@
   </head>
   <body>
 
-    <ul class='nav'>
+    <ul class='nav justify-content-end'>
       <li class='nav-link'>
         <a href="{{url_for('core.index')}}">Home</a>
       </li>
 
       {%  if current_user.is_authenticated %}
       <li class='nav-link'>
-        <a href="{{url_for('users.logout')}}">Log Out</a>
+        <a href="{{url_for('users.logout')}}">
+          <h1>Log Out</h1>
+        </a>
       </li>
       <li class='nav-link'>
         <a href="{{url_for('users.account')}}">Account</a>
@@ -29,7 +31,9 @@
 
       {% else %}
       <li class='nav-link'>
-        <a href="{{url_for('users.login')}}">Log In</a>
+        <a href="{{url_for('users.login')}}">
+            Log In
+        </a>
       </li>
       <li class='nav-link'>
         <a href="{{url_for('users.register')}}">Register</a>
