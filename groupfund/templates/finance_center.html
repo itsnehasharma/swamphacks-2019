@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class = "container">
+    <div class="card text-center">
+      <div class="card-header">
+           <h4 class="card-title">Outstanding Balance</h4>
+      </div>
+      <div class="card-body">
+          <h2>{Insert value the person owes here}</h2><br />
+        <a href="{{url_for('transactions.make_payment')}}" class="btn btn-outline-success btn-lg">Make a Payment</a>
+      </div>
+      <div class="card-footer text-muted">
+        Due by {insert date}
+      </div>
+    </div> <br><br>
+
+    <div class="row" align="center">
+    <div class="col-md" align="center">
+
+
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="https://www.pexels.com/photo/money-pink-coins-pig-9660/" alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Transaction History</h5>
+                <p class="card-text">View all of your recent transactions.</p>
+                <a href="{{url_for('users.transaction_history', username = current_user.username)}}" class="btn btn-primary">Go</a>
+              </div>
+            </div>
+            </div>
+
+            <div class="col-md" align="center">
+
+            <div class="card" style="width: 18rem;">
+              <img class="card-img-top" src="..." alt="Card image cap">
+              <div class="card-body">
+                <h5 class="card-title">Settings</h5>
+                <p class="card-text">Edit your payment settings and preferences.</p>
+                <a href="#" class="btn btn-primary">Go</a>
+              </div>
+            </div>
+            </div>
+
+            </div>
+
+{% endblock %}

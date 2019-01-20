@@ -3,32 +3,62 @@
 
   <div class="jumbotron">
     <div align="center">
-      <h1>Hey {{current_user.username}}!</h1>
+      <h1>Hey {{current_user.username}}!</h1><br>
+      Keep track of your savings process below.
       <!-- insert image for person -->
 
     </div>
   </div>
 
+<div class="row">
+<div class="col-sm" align="center">
 
-  <div class = "container">
-    <form method="post">
-      {{form.hidden_tag()}}
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Your Finances</h5>
+            <p class="card-text">Check out your outstanding balance, recent transactions, and edit your payment settings.</p>
+            <a href="{{url_for('users.finance_center')}}" class="btn btn-primary">Go</a>
+          </div>
+        </div>
+        </div>
 
-      <div class="form-group">
-          {{form.username.label(class='form-group')}}
-          {{form.username(class='form-control')}}
+        <div class="col-sm" align="center">
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Something</h5>
+            <p class="card-text">Check out your outstanding balance, recent transactions, and edit your payment settings.</p>
+            <a href="{{url_for('transactions.make_payment')}}" class="btn btn-primary">Go</a>
+          </div>
+        </div>
+        </div>
+
+        <div class="col-sm" align="center">
+
+        <div class="card" style="width: 18rem;">
+          <img class="card-img-top" src="..." alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Something</h5>
+            <p class="card-text">Check out your outstanding balance, recent transactions, and edit your payment settings.</p>
+            <a href="{{url_for('transactions.make_payment')}}" class="btn btn-primary">Go</a>
+          </div>
+        </div>
+        </div>
+
+</div>
+
+<br><br>
+      <div class="dropdown">
+        <button class="btn btn-outline-secondary btn-sm btn-block dropdown-toggle" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          More Stuff
+        </button>
+        <div class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" href="#" style="font-size:12px">Payment Settings</a>
+          <a class="dropdown-item" href="{{url_for('users.transaction_history', username = current_user.username)}}" style="font-size:12px">Transaction History</a>
+        </div>
       </div>
-
-      <div class="form-group">
-          {{form.email.label(class='form-group')}}
-          {{form.email(class='form-control')}}
-      </div>
-
-      <div class="form-group">
-          {{form.submit(class='btn-primary')}}
-      </div>
-
-    </form>
-    </div>
+    </div> <br>
 
   {% endblock %}

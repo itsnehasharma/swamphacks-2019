@@ -56,7 +56,8 @@ class Group(db.Model):
 
 	list_id=db.relationship('User',backref='group')
 	transactions=db.relationship('Transaction')
-	def __init__(self,group_id):
+
+	def __init__(self,group_id,total_amt):
 		self.group_id=group_id
 		self.total_amt=0
 
